@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="./jquery.enjoyhint.css">
+  <style>
+    body {
+      background-color:#f3f3f3;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      height: 100vh;
+      align-items: center;
+    }
+    .container{
+      /* background-color: red; */
+      width: 80vw;
+      height: 60vh;
+      display: flex;
+    }
+    .child {
+      width: 50%;
+      height: 100%;
+      color: #d3d7de;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+    .content {
+      width: 70%;
+      display: flex;
+      flex-flow: column;
+      text-align: center;
+    }
+    .child:first-child { 
+      border-right: 1px solid #d7dde6;
+    }
+    .blue {
+      /* background-color: blue; */
+    }
+    .green {
+      /* background-color: green; */
+    }
+    p {
+      margin: 5px;
+    }
+    .title {
+      color: #576573;
+      font-weight: bold;
+    }
+    .subtitle {
+      color: #cccfd4;
+      margin-bottom: 20px;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="child blue">
+      <div class="content">
+          <i class="fab fa-searchengin fa-6x"></i>
+          <p class="title">Buscar Recepción</p>
+          <p class="subtitle">Utiliza el buscador para visualizar o modificar recepciones</p>
+          <button type="button" class="btn btn-success">Buscar ahora</button>
+      </div>
+      
+    </div>
+    <div class="child green">
+        <div class="content">
+            <i class="fas fa-file-signature fa-6x"></i>
+            <p class="title">Recepción de Artículos</p>
+            <p class="subtitle">Genera una nueva recepción y lleva un control del inventario</p>
+            <button type="button" class="btn btn-info">Agregar recepción</button>
+        </div>
+       
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/kineticjs/5.2.0/kinetic.min.js"></script>
+  <script src="./enjoyhint.js"></script>
+  <script src="./jquery.enjoyhint.js"></script>
+
+  <script>
+    let enjoyhint = new EnjoyHint({});
+
+    let array_enjoy = [
+      {
+        'next .child:first-child': 'Te presentamos el nuevo Buscador de Recetas',
+        // timeout: 5000,
+        shape: 'circle',
+        radius: 180,
+        // margin: 100,
+        // bottom: 200,
+        "nextButton" : {className: "myNext", text: "Siguiente"},
+        "skipButton" : {className: "mySkip", text: "Saltar"},
+      },
+      {
+        'next .btn-success': 'Para buscar puedes presionar Click en "Buscar ahora"',
+        // timeout: 5000,
+        "nextButton" : {className: "myNext", text: "Siguiente"},
+        "skipButton" : {className: "mySkip", text: "Saltar"},
+      },
+      {
+        'next .child:last-child': 'O también pudes ingresar nuevos artículos para recepcionar',
+        // timeout: 5000,
+        shape: 'circle',
+        radius: 200,
+        margin: 100,
+        top: 30,
+        "nextButton" : {className: "myNext", text: "Siguiente"},
+        "skipButton" : {className: "mySkip", text: "Saltar"},
+      },
+      {
+        'click .btn-info': 'Para finalizar solo debes presionar Click en "Agregar recepción"',
+        // timeout: 5000,
+        "nextButton" : {className: "myNext", text: "Siguiente"},
+        "skipButton" : {className: "mySkip", text: "Saltar"},
+        showNext: false
+      }
+    ]
+    enjoyhint.set(array_enjoy);
+    enjoyhint.run();
+  </script>
+</body>
+</html>
